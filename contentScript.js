@@ -82,15 +82,11 @@ $(document).on('click', '#maximize-tray', function (e) {
 		new JustGage({
 			id: 'g2',
 			value: overallPercent,
+			//label: 'Overall',
 			min: 0,
 			max: 100,
 			symbol: '%',
 			pointer: true,
-			levelColors: [
-				"#a52a2a",
-				"#ffa500",
-				"#008000"
-			  ],
 			pointerOptions: {
 				toplength: -15,
 				bottomlength: 10,
@@ -353,11 +349,6 @@ function evaluateItems(json) {
         max: 100,
         symbol: '%',
         pointer: true,
-		levelColors: [
-			"#a52a2a",
-			"#ffa500",
-			"#008000"
-		  ],
         pointerOptions: {
           toplength: -15,
           bottomlength: 10,
@@ -379,11 +370,6 @@ function evaluateItems(json) {
         max: 100,
         symbol: '%',
         pointer: true,
-		levelColors: [
-			"#FF0000",
-			"#FFFF00",
-			"#31B404"
-		  ],
         pointerOptions: {
           toplength: -15,
           bottomlength: 10,
@@ -417,9 +403,7 @@ function getPseudoStyle(id, style) {
 function autocorrect() {
 	removeFocus();
 	var elements = document.getElementsByClassName("ua-focus");
-	var isFound = false;
 	for (var i = 0, len = elements.length; i < len; i++) {
-		isFound = true;
 		var tag = elements[i].tagName.toLowerCase();
 		if(elements[i]) {
 			elements[i].classList.add("ua-" + tag);
@@ -433,9 +417,6 @@ function autocorrect() {
 	// fetch(url)
 	// 	.then((response) => response.json())
 	// 	.then((json) => { evaluateItems(json); });
-	if(isFound){
-		evaluateItems(config_json);
-	}else{
-		alert("Already corrected");
-	}
+	evaluateItems(config_json);
+
 }
